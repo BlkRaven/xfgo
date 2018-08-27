@@ -9,7 +9,7 @@ Fate/Grand Order b服过sign检测xposed模块
 
 ## 说明
 
-**本模块工作原理为修改验证函数返回值或传入参数，开启本模块后则必须使用科技，否则报201。**
+**本模块工作原理为修改验证函数返回值或传入参数，开启本模块后必须使用科技，否则报201。**
 
 **如果不使用科技，请关闭此模块并重启手机。**
 
@@ -53,7 +53,7 @@ v1.1版：[https://github.com/locbytes/xfgo/releases/tag/v1.1](https://github.co
 
 拆分数据，获得`result`的value值，该值为一个json字符串。
 
-对该json数据进行处理，有如下数据需要修改，参数意义请参考模块代码中的注释
+对该json数据进行处理，有如下数据需要修改，推荐参考AnyProxy版服务器代码。
 
 ```json
 {
@@ -67,8 +67,8 @@ v1.1版：[https://github.com/locbytes/xfgo/releases/tag/v1.1](https://github.co
 
 ## 科技服务端代码参考
 
-暂未添加撤退胜利的相关示例代码
+AnyProxy版(v1.2, 推荐): [https://github.com/locbytes/FGO_AnyProxy](https://github.com/locbytes/FGO_AnyProxy)
 
-AnyProxy版: [https://github.com/locbytes/FGO_AnyProxy](https://github.com/locbytes/FGO_AnyProxy)
+Fiddler版(v1.1, 未更新): [https://github.com/locbytes/FGO_FiddlerScript](https://github.com/locbytes/FGO_FiddlerScript)
 
-Fiddler版: [https://github.com/locbytes/FGO_FiddlerScript](https://github.com/locbytes/FGO_FiddlerScript)
+ModifyFGO(使用Fiddler, v1.2): [https://github.com/heqyoufree/modifyfgo](https://github.com/heqyoufree/modifyfgo)
