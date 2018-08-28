@@ -82,7 +82,7 @@ v1.3版加入了通过请求服务器生成随机数作为战斗回合数`elapse
 
 [heqyoufree](https://github.com/heqyoufree)的ModifyFGO会对xfgo模块的新功能进行同步适配，更新速度与模块更新速度基本同步。
 
-ModifyFGO(使用Fiddler, v1.2, 推荐): [https://github.com/heqyoufree/modifyfgo](https://github.com/heqyoufree/modifyfgo)
+ModifyFGO(使用Fiddler, v1.3, 推荐): [https://github.com/heqyoufree/modifyfgo](https://github.com/heqyoufree/modifyfgo)
 
 AnyProxy版(v1.2, 推荐): [https://github.com/locbytes/FGO_AnyProxy](https://github.com/locbytes/FGO_AnyProxy)
 
