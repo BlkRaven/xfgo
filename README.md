@@ -84,6 +84,6 @@ v1.3版加入了通过请求服务器生成随机数作为战斗回合数`elapse
 
 ModifyFGO(使用Fiddler, v1.3, 推荐): [https://github.com/heqyoufree/modifyfgo](https://github.com/heqyoufree/modifyfgo)
 
-AnyProxy版(v1.2, 推荐): [https://github.com/locbytes/FGO_AnyProxy](https://github.com/locbytes/FGO_AnyProxy)
+AnyProxy版(v1.3, 推荐): [https://github.com/locbytes/FGO_AnyProxy](https://github.com/locbytes/FGO_AnyProxy)
 
-Fiddler版(v1.1, 未更新): [https://github.com/locbytes/FGO_FiddlerScript](https://github.com/locbytes/FGO_FiddlerScript)
+Fiddler版(v1.1, 暂停更新): [https://github.com/locbytes/FGO_FiddlerScript](https://github.com/locbytes/FGO_FiddlerScript)
