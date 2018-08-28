@@ -1,11 +1,19 @@
 # xfgo
 Fate/Grand Order b服过sign检测xposed模块
 
+捐赠我以支持我继续开发维护 [捐赠地址](https://github.com/locbytes/donation)
+
 当前游戏客户端版本: 1.21.2
 
 如有任何问题请提交issue，我会及时进行回复。
 
 核心代码 [Main.java](https://github.com/locbytes/xfgo/blob/master/app/src/main/java/com/locbytes/xfgo/Main.java)
+
+## 关于渠道服
+
+渠道服可以提交issue申请发布对应的release。
+
+目前已上传baidu渠道服的v1.1版，请前往release查看。
 
 ## 说明
 
