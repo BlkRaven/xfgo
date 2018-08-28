@@ -56,6 +56,8 @@ v1.1版：[https://github.com/locbytes/xfgo/releases/tag/v1.1](https://github.co
 
 ### 撤退胜利
 
+v1.3版加入了通过请求服务器生成随机数作为战斗回合数`elapsedTurn`的功能，请求地址通过xfgo用户界面进行设置。
+
 科技作者需在科技服务端对request进行修改，修改方法，具体示例代码请先参考模块中的代码。
 
 先监测包含`key=battleresult`的`requestData`，对该`requestData`进行处理。
@@ -76,8 +78,12 @@ v1.1版：[https://github.com/locbytes/xfgo/releases/tag/v1.1](https://github.co
 
 ## 科技服务端代码参考
 
+我因时间主要花费在开发xfgo模块上，故服务端参考代码更新速度会慢一些。
+
+[heqyoufree](https://github.com/heqyoufree)的ModifyFGO会对xfgo模块的新功能进行同步适配，更新速度与模块更新速度基本同步。
+
+ModifyFGO(使用Fiddler, v1.2, 推荐): [https://github.com/heqyoufree/modifyfgo](https://github.com/heqyoufree/modifyfgo)
+
 AnyProxy版(v1.2, 推荐): [https://github.com/locbytes/FGO_AnyProxy](https://github.com/locbytes/FGO_AnyProxy)
 
 Fiddler版(v1.1, 未更新): [https://github.com/locbytes/FGO_FiddlerScript](https://github.com/locbytes/FGO_FiddlerScript)
-
-ModifyFGO(使用Fiddler, v1.2): [https://github.com/heqyoufree/modifyfgo](https://github.com/heqyoufree/modifyfgo)
