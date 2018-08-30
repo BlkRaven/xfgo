@@ -1,7 +1,9 @@
 package com.locbytes.xfgo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.security.KeyChain;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +17,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+
+import javax.security.cert.CertificateException;
+import javax.security.cert.X509Certificate;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,6 +76,25 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        Button getRootCAButton=(Button)findViewById(R.id.getRootCAButton);
+        getRootCAButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String certContext = HttpUtil.get(serverAddressEdit.getText()+"?getRootCA");
+                        try {
+                            installCert(certContext);
+                        } catch (CertificateException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+            }
+        });
+
     }
 
     private void init() {
@@ -119,6 +143,15 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void installCert(String certContext) throws CertificateException {
+        byte [] cert = certContext.getBytes();
+        X509Certificate x509 = X509Certificate.getInstance(cert);
+        Intent intent = KeyChain.createInstallIntent();
+        intent.putExtra(KeyChain.EXTRA_CERTIFICATE, x509.getEncoded());
+        intent.putExtra(KeyChain.EXTRA_NAME, "xfgo");
+        startActivity(intent);
     }
 
     private String bool2string(boolean bool){

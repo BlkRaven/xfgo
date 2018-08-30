@@ -40,6 +40,12 @@
 
             </LinearLayout>
 
+            <Button
+                android:id="@+id/getRootCAButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="安装证书(需要服务端已运行)" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
