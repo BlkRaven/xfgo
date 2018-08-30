@@ -40,9 +40,17 @@ v1.1版：[https://github.com/locbytes/xfgo/releases/tag/v1.1](https://github.co
 
 ## 使用方法
 
-用户需安装并应用此模块。
+当前已更新至v1.4版。
 
-### 修改战斗数据
+安装xfgo模块，在xp框架中开启模块并重启手机。
+
+打开xfgo，给予联网权限和文件读写权限，联网是向科技服务端上传科技配置文件，文件读写权限是在本地记录你的用户配置。
+
+确保服务端已经运行的情况下，设置WiFi代理，在xfgo中设置相关功能，应用后服务端会提示配置文件已更新。
+
+## 模块核心功能适配方法
+
+### 修改战斗数据过sign验证
 
 科技作者需在科技服务端将`response`的`sign`改为`""`。
 
@@ -78,12 +86,10 @@ v1.3版加入了通过请求服务器生成随机数作为战斗回合数`elapse
 
 ## 科技服务端代码参考
 
-我因时间主要花费在开发xfgo模块上，故服务端参考代码更新速度会慢一些。
+自用的话推荐使用[AnyProxy版的一键整合包]()，更新版本可以直接替换文件，免去下载安装配置Fiddler的苦恼。
 
-[heqyoufree](https://github.com/heqyoufree)的ModifyFGO会对xfgo模块的新功能进行同步适配，更新速度与模块更新速度基本同步。
+AnyProxy版(v1.4, 推荐): [https://github.com/locbytes/FGO_AnyProxy](https://github.com/locbytes/FGO_AnyProxy)
 
-ModifyFGO(使用Fiddler, v1.3, 推荐): [https://github.com/heqyoufree/modifyfgo](https://github.com/heqyoufree/modifyfgo)
-
-AnyProxy版(v1.3, 推荐): [https://github.com/locbytes/FGO_AnyProxy](https://github.com/locbytes/FGO_AnyProxy)
+ModifyFGO(使用Fiddler, v1.3): [https://github.com/heqyoufree/modifyfgo](https://github.com/heqyoufree/modifyfgo)
 
 Fiddler版(v1.1, 暂停更新): [https://github.com/locbytes/FGO_FiddlerScript](https://github.com/locbytes/FGO_FiddlerScript)

@@ -8,7 +8,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 
@@ -20,7 +24,15 @@ public class MainActivity extends AppCompatActivity {
             "android.permission.WRITE_EXTERNAL_STORAGE"
     };
 
-    private EditText editText;
+    private EditText serverAddressEdit;
+    private EditText uHpEdit;
+    private EditText uAtkEdit;
+    private EditText eHpEdit;
+    private EditText eAtkEdit;
+
+    private Switch tdLvSwitch;
+    private Switch skillLvSwitch;
+    private Switch battleCancelSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +41,29 @@ public class MainActivity extends AppCompatActivity {
 
         verifyStoragePermissions(this);
 
-        editText=(EditText)findViewById(R.id.serverAddress);
-        Button button=(Button)findViewById(R.id.submitButton);
-
         init();
 
-        button.setOnClickListener(new View.OnClickListener() {
+        Button submitButton=(Button)findViewById(R.id.submitButton);
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String res = FileUtil.saveFileToSDcard("serverAddress",editText.getText().toString());
+                final String serverAddress = serverAddressEdit.getText().toString();
+                final JSONObject newOptions = new JSONObject();
+                try {
+                    newOptions.put("serverAddress",serverAddress);
+                    newOptions.put("uHp",uHpEdit.getText().toString());
+                    newOptions.put("uAtk",uAtkEdit.getText().toString());
+                    newOptions.put("eHp",eHpEdit.getText().toString());
+                    newOptions.put("eAtk",eAtkEdit.getText().toString());
+                    newOptions.put("tdLv",bool2string(tdLvSwitch.isChecked()));
+                    newOptions.put("skillLv",bool2string(skillLvSwitch.isChecked()));
+                    newOptions.put("battleCancel",bool2string(battleCancelSwitch.isChecked()));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                String res = FileUtil.saveFileToSDcard("options",newOptions.toString());
+                HttpUtil.post(serverAddress, newOptions.toString());;
+
                 if(res.equals("true")){
                     Toast.makeText(getApplicationContext(),"应用成功",Toast.LENGTH_SHORT).show();
                 }else{
@@ -48,12 +74,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+
         File dir = getExternalFilesDir(null);
         if (!dir.exists()){
             dir.mkdir();
         }
-        String serverAddress = FileUtil.getFileDataFromSdcard("serverAddress");
-        editText.setText(serverAddress);
+
+        serverAddressEdit=(EditText)findViewById(R.id.serverAddressEdit);
+        uHpEdit=(EditText)findViewById(R.id.uHpEdit);
+        uAtkEdit=(EditText)findViewById(R.id.uAtkEdit);
+        eHpEdit=(EditText)findViewById(R.id.eHpEdit);
+        eAtkEdit=(EditText)findViewById(R.id.eAtkEdit);
+
+        tdLvSwitch=(Switch)findViewById(R.id.tdlvSwitch);
+        skillLvSwitch=(Switch)findViewById(R.id.skilllvSwitch);
+        battleCancelSwitch=(Switch)findViewById(R.id.battleCancelSwitch);
+
+        String oldOptionsStr = FileUtil.getFileDataFromSdcard("options");
+        if(oldOptionsStr!=null){
+            try {
+                JSONObject oldOptions = new JSONObject(oldOptionsStr);
+                serverAddressEdit.setText(oldOptions.getString("serverAddress"));
+                uHpEdit.setText(oldOptions.getString("uHp"));
+                uAtkEdit.setText(oldOptions.getString("uAtk"));
+                eHpEdit.setText(oldOptions.getString("eHp"));
+                eAtkEdit.setText(oldOptions.getString("eAtk"));
+                tdLvSwitch.setChecked(string2bool(oldOptions.getString("tdLv")));
+                skillLvSwitch.setChecked(string2bool(oldOptions.getString("skillLv")));
+                battleCancelSwitch.setChecked(string2bool(oldOptions.getString("battleCancel")));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
     }
 
     // 安卓6.0及以上动态申请权限
@@ -66,6 +119,18 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private String bool2string(boolean bool){
+        if(bool){
+            return "true";
+        }else{
+            return "false";
+        }
+    }
+
+    private Boolean string2bool(String string){
+        return string.equals("true");
     }
 
 }
