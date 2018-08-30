@@ -40,7 +40,7 @@ v1.1版：[https://github.com/locbytes/xfgo/releases/tag/v1.1](https://github.co
 
 ## 使用方法
 
-当前已更新至v1.4版。
+当前已更新至v1.4版，从此版开始使用okhttp3。
 
 安装xfgo模块，在xp框架中开启模块并重启手机。
 
