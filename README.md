@@ -2,6 +2,10 @@
 
 捐赠我以支持我继续开发维护 [捐赠地址](https://github.com/locbytes/donation)
 
+**特别说明：本软件完全免费发布，遵循自订开源协议开源，接受自愿捐赠，没有任何分销商，如果遇到销售本软件副本的情况请及时向我举报。**
+
+严禁倒卖声明：[https://github.com/locbytes/FGO_AnyProxy/blob/master/严禁倒卖.md](https://github.com/locbytes/FGO_AnyProxy/blob/master/严禁倒卖.md)
+
 Fate/Grand Order b服过sign检测xposed模块 v1.4
 
 当前游戏客户端版本: 1.21.2
