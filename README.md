@@ -78,8 +78,6 @@ v1.1版：[https://github.com/locbytes/xfgo/releases/tag/v1.1](https://github.co
 
 自用的话推荐使用[AnyProxy版的一键整合包](https://github.com/locbytes/FGO_AnyProxy/releases)，更新版本可以直接替换文件，免去下载安装配置Fiddler的苦恼。
 
-AnyProxy版(v1.4, 推荐): [https://github.com/locbytes/FGO_AnyProxy](https://github.com/locbytes/FGO_AnyProxy)
+AnyProxy版(v1.5, 推荐): [https://github.com/locbytes/FGO_AnyProxy](https://github.com/locbytes/FGO_AnyProxy)
 
-ModifyFGO(使用Fiddler, v1.3): [https://github.com/heqyoufree/modifyfgo](https://github.com/heqyoufree/modifyfgo)
-
-Fiddler版(v1.1, 暂停更新): [https://github.com/locbytes/FGO_FiddlerScript](https://github.com/locbytes/FGO_FiddlerScript)
+ModifyFGO(v1.4, Fiddler/AnyProxy, 魔改版): [https://github.com/heqyoufree/modifyfgo](https://github.com/heqyoufree/modifyfgo)
