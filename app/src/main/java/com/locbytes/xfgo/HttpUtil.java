@@ -36,10 +36,8 @@ public class HttpUtil {
             public void run() {
                 try {
                     Response response = okHttpClient.newCall(request).execute();
-                    if (response.isSuccessful()) {
-                        Log.e("okhttp3 post success", "run: " + response.code() + response.body().string());
-                    } else {
-                        Log.e("okhttp3 post error", "run: " + response.code() + response.message());
+                    if (!response.isSuccessful()) {
+                        Log.d("okhttp3 post error", response.code() + " " + response.message());
                     }
                 } catch (IOException e) {
                     e.printStackTrace();

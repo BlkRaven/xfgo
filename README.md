@@ -4,9 +4,9 @@
 
 **特别说明：本软件完全免费发布，遵循自订开源协议开源，接受自愿捐赠，没有任何分销商，如果遇到销售本软件副本的情况请及时向我举报。**
 
-严禁倒卖声明：[https://github.com/locbytes/FGO_AnyProxy/blob/master/严禁倒卖.md](https://github.com/locbytes/FGO_AnyProxy/blob/master/严禁倒卖.md)
+严禁倒卖：[https://github.com/locbytes/FGO_AnyProxy/blob/master/严禁倒卖.md](https://github.com/locbytes/FGO_AnyProxy/blob/master/严禁倒卖.md)
 
-Fate/Grand Order b服过sign检测xposed模块 v1.4
+Fate/Grand Order b服过sign检测xposed模块 v1.5
 
 当前游戏客户端版本: 1.21.2
 
@@ -16,9 +16,7 @@ Fate/Grand Order b服过sign检测xposed模块 v1.4
 
 ## 关于渠道服
 
-渠道服可以提交issue申请发布对应的release。
-
-目前已上传baidu渠道服的v1.1版，请前往release查看。
+从v1.5版开始适配了渠道服的包名通用部分，但是无法保证适配了全部的渠道服，如果使用渠道服出现异常请提交issue进行说明。
 
 ## 说明
 
@@ -38,17 +36,11 @@ Android版本低于4.4.2的用户只能使用v1.1版的模块，即只有基础�
 
 v1.1版：[https://github.com/locbytes/xfgo/releases/tag/v1.1](https://github.com/locbytes/xfgo/releases/tag/v1.1)
 
-**想要使用撤退胜利功能的用户请等待自己科技的作者适配完成。**
-
 ## 使用方法
 
-当前已更新至v1.4版，从此版开始使用okhttp3。
+参考xfgo_anyproxy整合包使用教程。
 
-安装xfgo模块，在xp框架中开启模块并重启手机。
-
-打开xfgo，给予联网权限和文件读写权限，联网是向科技服务端上传科技配置文件，文件读写权限是在本地记录你的用户配置。
-
-确保服务端已经运行的情况下，设置WiFi代理，在xfgo中设置相关功能，应用后服务端会提示配置文件已更新。
+[整合包使用教程](https://github.com/locbytes/FGO_AnyProxy/blob/master/Course/Course.md)
 
 ## 模块核心功能适配方法
 
@@ -66,20 +58,14 @@ v1.1版：[https://github.com/locbytes/xfgo/releases/tag/v1.1](https://github.co
 
 ### 撤退胜利
 
-v1.3版加入了通过请求服务器生成随机数作为战斗回合数`elapsedTurn`的功能，请求地址通过xfgo用户界面进行设置。
+自v1.3版加入了通过请求服务器生成随机数作为战斗回合数`elapsedTurn`的功能，请求地址通过xfgo用户界面进行设置。
 
-科技作者需在科技服务端对request进行修改，修改方法，具体示例代码请先参考模块中的代码。
-
-先监测包含`key=battleresult`的`requestData`，对该`requestData`进行处理。
-
-拆分数据，获得`result`的value值，该值为一个json字符串。
-
-对该json数据进行处理，有如下数据需要修改，推荐参考AnyProxy版服务器代码。
+科技作者需在科技服务端对request进行修改，修改方法、具体示例代码请先参考模块和科技服务端的示例代码。
 
 ```json
 {
     "battleResult": 1,
-    "elapsedTurn": 11,
+    "elapsedTurn": 3,
     "aliveUniqueIds": []
 }
 ```

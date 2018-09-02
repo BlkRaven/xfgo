@@ -17,16 +17,19 @@ public class Main implements IXposedHookLoadPackage {
     @Override
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
 
-        if(lpparam.packageName.equals("com.bilibili.fatego")){
+        if( lpparam.packageName.equals("com.bilibili.fatego")
+                || lpparam.packageName.equals("com.tencent.tmgp.fgo")
+                || lpparam.packageName.contains("com.bilibili.fgo.") ){
+
             findAndHookMethod("com.netease.htprotect.HTProtect",lpparam.classLoader,"getDataSign", Context.class, String.class, int.class, new XC_MethodHook() {
                 @Override
                 protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                     if(param.args[1].toString().contains("battleresult")){
 
-                        String optionsStr = FileUtil.getFileDataFromSdcard("options");
-                        JSONObject options = new JSONObject(optionsStr);
-                        Boolean battleCancel = string2bool(options.getString("battleCancel"));
-
+                        Boolean battleCancel = false;
+                        if( string2bool(getOptions("main")) && string2bool(getOptions("battleCancel")) ){
+                            battleCancel = true;
+                        }
                         if(battleCancel){
 
                             //XposedBridge.log("Battle Result");
@@ -86,13 +89,15 @@ public class Main implements IXposedHookLoadPackage {
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     if(param.args[1].toString().contains("battle_setup")||param.args[1].toString().contains("battle_resume")){
                         //XposedBridge.log("Battle Setup/Resume");
-                        param.setResult("");
+                        if(string2bool(getOptions("main"))){
+                            param.setResult("");
+                        }
                     }
                     super.afterHookedMethod(param);
                 }
             });
-        }
 
+        }
     }
 
     // 从服务器获取随机数，若不能获取则返回11，不设置服务器地址也返回11

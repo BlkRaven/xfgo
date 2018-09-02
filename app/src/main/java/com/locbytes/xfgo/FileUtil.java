@@ -10,8 +10,10 @@ import java.io.IOException;
 
 public class FileUtil {
 
+    private static String filePath = "Android/data/com.locbytes.xfgo/files/";
+
     public static String saveFileToSDcard(String filename, String info) {
-        filename = "Android/data/com.locbytes.xfgo/files/"+filename;
+        filename = filePath + filename;
         String result = "false";
         File file = new File(Environment.getExternalStorageDirectory(), filename);
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
@@ -28,7 +30,7 @@ public class FileUtil {
     }
 
     public static String getFileDataFromSdcard(String filename) {
-        filename = "Android/data/com.locbytes.xfgo/files/"+filename;
+        filename = filePath + filename;
         String result = null;
         ByteArrayOutputStream arrayOutputStream = new ByteArrayOutputStream();
         File file = new File(Environment.getExternalStorageDirectory(),

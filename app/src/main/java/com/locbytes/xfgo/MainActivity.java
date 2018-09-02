@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText eHpEdit;
     private EditText eAtkEdit;
 
+    private Switch mainSwitch;
     private Switch tdLvSwitch;
     private Switch skillLvSwitch;
     private Switch battleCancelSwitch;
@@ -43,61 +44,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        verifyStoragePermissions(this);
-
         init();
-
-        Button submitButton=(Button)findViewById(R.id.submitButton);
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String serverAddress = serverAddressEdit.getText().toString();
-                final JSONObject newOptions = new JSONObject();
-                try {
-                    newOptions.put("serverAddress",serverAddress);
-                    newOptions.put("uHp",uHpEdit.getText().toString());
-                    newOptions.put("uAtk",uAtkEdit.getText().toString());
-                    newOptions.put("eHp",eHpEdit.getText().toString());
-                    newOptions.put("eAtk",eAtkEdit.getText().toString());
-                    newOptions.put("tdLv",bool2string(tdLvSwitch.isChecked()));
-                    newOptions.put("skillLv",bool2string(skillLvSwitch.isChecked()));
-                    newOptions.put("battleCancel",bool2string(battleCancelSwitch.isChecked()));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                String res = FileUtil.saveFileToSDcard("options",newOptions.toString());
-                HttpUtil.post(serverAddress, newOptions.toString());;
-
-                if(res.equals("true")){
-                    Toast.makeText(getApplicationContext(),"应用成功",Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getApplicationContext(),"应用失败",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
-        Button getRootCAButton=(Button)findViewById(R.id.getRootCAButton);
-        getRootCAButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        String certContext = HttpUtil.get(serverAddressEdit.getText()+"?getRootCA");
-                        try {
-                            installCert(certContext);
-                        } catch (CertificateException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }).start();
-            }
-        });
-
+        initButtons();
     }
 
     private void init() {
+
+        verifyStoragePermissions(this);
 
         File dir = getExternalFilesDir(null);
         if (!dir.exists()){
@@ -110,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         eHpEdit=(EditText)findViewById(R.id.eHpEdit);
         eAtkEdit=(EditText)findViewById(R.id.eAtkEdit);
 
+        mainSwitch=(Switch)findViewById(R.id.mainSwitch);
         tdLvSwitch=(Switch)findViewById(R.id.tdlvSwitch);
         skillLvSwitch=(Switch)findViewById(R.id.skilllvSwitch);
         battleCancelSwitch=(Switch)findViewById(R.id.battleCancelSwitch);
@@ -119,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 JSONObject oldOptions = new JSONObject(oldOptionsStr);
                 serverAddressEdit.setText(oldOptions.getString("serverAddress"));
+                mainSwitch.setChecked(string2bool(oldOptions.getString("main")));
                 uHpEdit.setText(oldOptions.getString("uHp"));
                 uAtkEdit.setText(oldOptions.getString("uAtk"));
                 eHpEdit.setText(oldOptions.getString("eHp"));
@@ -130,6 +85,60 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+
+    }
+
+    private void initButtons(){
+
+        Button submitButton = (Button) findViewById(R.id.submitButton);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String serverAddress = serverAddressEdit.getText().toString();
+                final JSONObject newOptions = new JSONObject();
+                try {
+                    newOptions.put("serverAddress",serverAddress);
+                    newOptions.put("main",bool2string(mainSwitch.isChecked()));
+                    newOptions.put("uHp",uHpEdit.getText().toString());
+                    newOptions.put("uAtk",uAtkEdit.getText().toString());
+                    newOptions.put("eHp",eHpEdit.getText().toString());
+                    newOptions.put("eAtk",eAtkEdit.getText().toString());
+                    newOptions.put("tdLv",bool2string(tdLvSwitch.isChecked()));
+                    newOptions.put("skillLv",bool2string(skillLvSwitch.isChecked()));
+                    newOptions.put("battleCancel",bool2string(battleCancelSwitch.isChecked()));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                String res = FileUtil.saveFileToSDcard("options",newOptions.toString());
+                HttpUtil.post(serverAddress, newOptions.toString());
+
+                if(res.equals("true")){
+                    Toast.makeText(getApplicationContext(),"应用成功",Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(),"应用失败",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        Button getRootCAButton = (Button) findViewById(R.id.getRootCAButton);
+        getRootCAButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String certContext = HttpUtil.get(serverAddressEdit.getText()+"?getRootCA");
+                        if(certContext!=null){
+                            try {
+                                installCert(certContext);
+                            } catch (CertificateException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }).start();
+            }
+        });
 
     }
 
