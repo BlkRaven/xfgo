@@ -14,6 +14,8 @@ Fate/Grand Order b服过sign检测xposed模块
 
 [v1.5更新日志](https://github.com/locbytes/xfgo/blob/master/ChangeLog.md)
 
+从v1.5版开始xfgo模块不再添加新功能，只做日常维护和BUG修复。
+
 ## 说明
 
 **本模块工作原理为修改验证函数返回值或传入参数。**
