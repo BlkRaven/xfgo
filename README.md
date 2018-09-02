@@ -6,17 +6,13 @@
 
 严禁倒卖：[https://github.com/locbytes/FGO_AnyProxy/blob/master/严禁倒卖.md](https://github.com/locbytes/FGO_AnyProxy/blob/master/严禁倒卖.md)
 
-Fate/Grand Order b服过sign检测xposed模块 v1.5
+Fate/Grand Order b服过sign检测xposed模块
 
 当前游戏客户端版本: 1.21.2
 
 如有任何问题请提交issue，我会及时进行回复。
 
-核心代码 [Main.java](https://github.com/locbytes/xfgo/blob/master/app/src/main/java/com/locbytes/xfgo/Main.java)
-
-## 关于渠道服
-
-从v1.5版开始适配了渠道服的包名通用部分，但是无法保证适配了全部的渠道服，如果使用渠道服出现异常请提交issue进行说明。
+[v1.5更新日志](https://github.com/locbytes/xfgo/blob/master/ChangeLog.md)
 
 ## 说明
 
@@ -35,6 +31,10 @@ v1.2版因加入了撤退胜利的数据处理逻辑，导致需要使用JSONArr
 Android版本低于4.4.2的用户只能使用v1.1版的模块，即只有基础的过sign验证功能，调整参数需要改服务端代码。
 
 v1.1版：[https://github.com/locbytes/xfgo/releases/tag/v1.1](https://github.com/locbytes/xfgo/releases/tag/v1.1)
+
+## 关于渠道服
+
+从v1.5版开始适配了渠道服的包名通用部分，但是无法保证适配了全部的渠道服，如果使用渠道服出现异常请提交issue进行说明。
 
 ## 使用方法
 
