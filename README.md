@@ -16,6 +16,12 @@ Fate/Grand Order b服过sign检测xposed模块
 
 从v1.5版开始xfgo模块不再添加新功能，只做日常维护和BUG修复。
 
+## 使用方法
+
+参考xfgo_anyproxy整合包使用教程，iOS设备我这目前没有解决方案。
+
+[整合包使用教程](https://github.com/locbytes/FGO_AnyProxy/blob/master/整合包使用教程/整合包使用教程.md)
+
 ## 说明
 
 **本模块工作原理为修改验证函数返回值或传入参数。**
@@ -37,12 +43,6 @@ v1.1版：[https://github.com/locbytes/xfgo/releases/tag/v1.1](https://github.co
 ## 关于渠道服
 
 从v1.5版开始适配了渠道服的包名通用部分，但是无法保证适配了全部的渠道服，如果使用渠道服出现异常请提交issue进行说明。
-
-## 使用方法
-
-参考xfgo_anyproxy整合包使用教程。
-
-[整合包使用教程](https://github.com/locbytes/FGO_AnyProxy/blob/master/整合包使用教程/整合包使用教程.md)
 
 ## 模块核心功能适配方法
 
