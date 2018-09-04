@@ -42,7 +42,7 @@ v1.1版：[https://github.com/locbytes/xfgo/releases/tag/v1.1](https://github.co
 
 参考xfgo_anyproxy整合包使用教程。
 
-[整合包使用教程](https://github.com/locbytes/FGO_AnyProxy/blob/master/Course/Course.md)
+[整合包使用教程](https://github.com/locbytes/FGO_AnyProxy/blob/master/整合包使用教程/整合包使用教程.md)
 
 ## 模块核心功能适配方法
 
