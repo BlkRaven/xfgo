@@ -2,9 +2,9 @@
 
 捐赠我以支持我继续开发维护 [捐赠地址](https://github.com/locbytes/donation)
 
-**特别说明：本软件完全免费发布，遵循自订开源协议开源，接受自愿捐赠，没有任何分销商，如果遇到销售本软件副本的情况请及时向我举报。**
+**特别说明：本软件完全免费发布，遵循自订开源协议开源，接受自愿捐赠，没有任何付费销售渠道。**
 
-严禁倒卖：[https://github.com/locbytes/FGO_AnyProxy/blob/master/严禁倒卖.md](https://github.com/locbytes/FGO_AnyProxy/blob/master/严禁倒卖.md)
+**禁止销售xfgo_anyproxy整合包，如果发现有销售整合包的群或个人请及时向我举报。**
 
 Fate/Grand Order b服过sign检测xposed模块
 

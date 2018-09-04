@@ -8,6 +8,8 @@ import org.json.JSONObject;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.XC_MethodHook;
+import de.robv.android.xposed.XposedBridge;
+import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
@@ -89,6 +91,7 @@ public class Main implements IXposedHookLoadPackage {
                 protected void afterHookedMethod(MethodHookParam param) throws Throwable {
                     if(param.args[1].toString().contains("battle_setup")||param.args[1].toString().contains("battle_resume")){
                         //XposedBridge.log("Battle Setup/Resume");
+                        //XposedBridge.log(param.getResult().toString());
                         if(string2bool(getOptions("main"))){
                             param.setResult("");
                         }
